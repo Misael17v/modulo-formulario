@@ -1,7 +1,7 @@
 <?xml version="1.0"?/>
 
 <odoo>
-    <record id="libros_form_view" model="ir.vi.view">
+    <record id="libros_form_view" model="ir.ui.view">
         <field name="name">libro.form.view</field>
         <field name="model">libros</field>
         <field name="arch" type="xml">

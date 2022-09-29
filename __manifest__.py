@@ -1,19 +1,19 @@
-# -*-  codificacion: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 {
-    'name': "Curso de programacion Odoo 14",
-    'summary':""" 
-    Curso de programacion Odoo 14, funcionalidades
-    """,
-    'author': 'Misael',
-    'category':'General',
-    'version': '1.0.0',
-    'depends':[],
+    'name':"My segunda libreria",
+    'summary': "manage book easily",
+    'description':"""
+    Capitulo 5""",
+    'author': "Misael",
+    'website':"",
+    'version':'1.0.0',
+    'depends':['base'],
     'data':[
-        'views/menu_view.xml',
-        'views/libros_view.xml',
-        'security/libreria_security.xml',
+        'security/groups.xml',
         'security/ir.model.access.csv',
-        
+        'views/library_book.xml',
+        'views/library_book_categ.xml'
     ]
+    
 }

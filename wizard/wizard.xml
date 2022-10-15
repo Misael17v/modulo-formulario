@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="wizard_intro" model="ir.ui.view">
+            <field name="name">wizard intro</field>
+            <field name="model">wizard</field>
+            <field name="arch" type="xml">
+               <form string="intro">
+                  <group>
+                    <field name="name"/>
+                  </group>
+                  <group>
+                    <field name="date_to"/>
+                  </group>
+                  <footer>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                  </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_menu_wizard" model="ir.actions.act_window">
+            <field name="name">intro</field>
+
+            <field name="res_model">wizard</field>
+
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="view_mode">form</field>
+
+            <field name="view_id" ref="wizard_intro"/>
+
+            <field name="target">new</field>
+        </record>
+
+        <!-- aqui va los menu item-->
+        <!-- en el aparado de action se le pone el id del segundo record que es <record id="action_menu_wizard" model="ir.actions.act_window"> -->
+        <!-- el parent lo sacamos de la vita de odoo ahorita se explica-->
+
+        
+        <menuitem name="Menu Intro" parent="contacts.menu_contacts" id="menu_intro" action="action_menu_wizard" />
+
+    </data>
+</odoo>

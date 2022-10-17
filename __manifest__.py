@@ -24,6 +24,7 @@ Description related to library.
         'reports/book_rent_templates.xml',
         'views/repot.xml',
         'wizard/wizard.xml',
+        'views/wizard_report.xml'
         
 
     ],

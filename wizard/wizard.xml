@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="wizard_intro" model="ir.ui.view">
-            <field name="name">wizard intro</field>
+        <record id="wizard_prueba" model="ir.ui.view">
+            <field name="name">wizard_prueba</field>
             <field name="model">wizard</field>
             <field name="arch" type="xml">
-               <form string="intro">
+               <form string="introdoo">
                   <group>
-                    <field name="name"/>
-                  </group>
-                  <group>
-                    <field name="date_to"/>
+                    <group name="company_dates" string="general information">
+
+                    </group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="date_to"/>
+                    </group>
                   </group>
                   <footer>
+                    <button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight" />
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                   </footer>
                </form>
@@ -20,25 +27,24 @@
         </record>
 
         <record id="action_menu_wizard" model="ir.actions.act_window">
-            <field name="name">intro</field>
-
+            <field name="name">Introdoo</field>
             <field name="res_model">wizard</field>
-
-            <field name="type">ir.actions.act_window</field>
-
+            
+            
             <field name="view_mode">form</field>
-
-            <field name="view_id" ref="wizard_intro"/>
-
+            <field name="view_id" ref="wizard_prueba"/>
             <field name="target">new</field>
         </record>
 
-        <!-- aqui va los menu item-->
-        <!-- en el aparado de action se le pone el id del segundo record que es <record id="action_menu_wizard" model="ir.actions.act_window"> -->
-        <!-- el parent lo sacamos de la vita de odoo ahorita se explica-->
+        <menuitem id="menu_introdoo"
+         name="Menu introdoo"
+         parent="contacts.menu_contacts"
+         sequence="10"/>
 
-        
-        <menuitem name="Menu Intro" parent="contacts.menu_contacts" id="menu_intro" action="action_menu_wizard" />
-
+       <menuitem id="submwnu_introdoo"
+       name="pfd"
+       sequence="3"
+       action="action_menu_wizard"
+       parent="my_library.menu_introdoo" /> 
     </data>
 </odoo>

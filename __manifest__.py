@@ -11,7 +11,7 @@ Description related to library.
     'website': "http://www.example.com",
     'category': 'Library',
     'version': '14.0.1',
-    'depends': ['base', 'contacts','sale','web'],
+    'depends': ['base', 'contacts','sale','web',],
 
     'data': [
         'security/groups.xml',
@@ -25,6 +25,7 @@ Description related to library.
         'views/repot.xml',
         'wizard/wizard.xml',
         'views/wizard_report.xml'
+        
         
 
     ],

@@ -6,21 +6,32 @@ class ResCompany(models.TransientModel):
     date_from=fields.Date()
     date_to=fields.Date()
     name=fields.Char()
+    user_id=fields.Many2one('res.partner', string='usuario')
     
     
     def check_report(self):
-        data = {'date_from': self.date_from, 'date_to':self.date_to, 'name':self.name}
-        data['form'] = self.read(['name', 'date_from', 'date_to'])[0]
-        return self._print_report(data)
-
+         data = {}
+         data['form'] = self.read(['user_id','name', 'date_from', 'date_to'])[0]
+         return self._print_report(data)
+     
+     
     def _print_report(self, data):
-        data['form'].update(self.read(['name', 'date_from', 'date_to'])[0])
-        return self.env['report'].get_action(self, 'my_library.wizard_pdf_template', data=data) 
+        data['form'].update(self.read(['user_id'])[0])
+        return self.env['report'].get_action(self, 'my_librari.my_library.wizard_pdf_template', data=data)
+    
+    # # def check_report(self):
+    # #     data = {'date_from': self.date_from, 'date_to':self.date_to, 'name':self.name}
+    # #     data['form'] = self.read(['name', 'date_from', 'date_to'])[0]
+    # #     return self._print_report(data)
+
+    # def _print_report(self, data):
+    #      data['form'].update(self.read(['user_id','name', 'date_from', 'date_to'])[0])
+    #      return self.env['report'].get_action(self, 'my_library.wizard_pdf_template', data=data) 
     
     ##este el el boton imbrimir o print
-#     def action_print_report(self):
-#         data={'date_from': self.date_from, 'date_to':self.date_to, 'name':self.name}
-#         return self.env.ref('my_library.wizard_report.xml').report_action(self,data=data)
+    # def check_report(self):
+    #      data={'user_id':self.user_id,'date_from': self.date_from, 'date_to':self.date_to, 'name':self.name}
+    #      return self.env.ref('my_library_wizard_report.xml').report_action(self,data=data)
     
 # class   WizardReportPDF(models.AbstractModel):
 #      _name = 'report.my_library.my_library_pdf_template'

@@ -1,107 +1,15 @@
 <odoo>
     <!-- estructura-->
-    <!-- <div> -->
-    <!-- <span t-field="doc.validity_date"></span>
-                    <span t-field="doc.date_order" ></span> -->
-
-    <!-- <t t-raw="value">t raw, otra manera de imprimir valores</t>
-
-                    <h1>la diferiencia de t-esc, imprime el return, t-raw imprime en crudo </h1>
-
-                    <t t-field="partner_id.calle">t-field tiene que ver con los campos de odoo, tiene que existir en los modulos</t> -->
-    <!-- ciclo if-->
-
-    <!-- <t t-if="value==1">se programa igual que el if de siempre
-                        <p>El valor es 1</p>
-                    </t>
-                    <t t-elif="value==2">
-                         <p>el valor es 2</p>
-                         </t>
-                    <t t-else="">
-                         <p>el valor es mayor a 3</p> </t>
-
-                    <p t-if="value == 1" t-esc="value"/> -->
-
-    <!-- ciclo for-->
-
-    <!-- <t t-foreach="[1,2,3,4]" t-as="i">siempre en los foreach, debe ir arreglos, para acceder a los datos se usa t-as</t>
-                    <p t-esc="i">para imprimir se usa t-esc="i"</p> -->
-
-    <!-- atributos-->
-    <!-- <div t-att-a="12">esto es como si generamos el siguente div</div>
-
-                    <div a="12"></div>  -->
-
-    <!-- otro ejemplo de atributo-->
-    <!-- <div t-att="{'a':1,'b':2}"></div>
-                    <div a="1" b="2">
-                    </div>
-
-                    <div t-att="['a','b']"></div>
-                    <div a="b"></div> -->
-
-    <!-- llamar a otros template-->
-    <!-- <t t-call="book_rents_template">t-call se usa para llamar a otro template</t> -->
-
-    <!-- java script-->
-    <!-- <t t-set="value" t-value="12"/>
-                   <t t-set="value2" t-value="12"/>
-
-                   <t t-js="odoo">
-                    console.log("value",odoo.value2)
-                   </t> -->
-
-    <!-- </div> -->
-
-
-    <!-- <data> -->
-    <!-- <report id="report_custom"
-         string="Reporte Personalizado"
-          model="sale.order"
-           report_type="qweb-pdf"
-            name="my_library.web_custom_template" /> -->
-
-    <!-- <template id="web_custom_template">
-            <t t-call="web.html_container">
-                <t t-call="web.external_layout">
-                    <div class="header">
-                        MI empresa/logo
-                </div>
-                    <div class="page">
-                        <h1>hola</h1>
-                        <p>mi reporte</p>
-                    </div>
-                    <div class="footer">
-                        <small>Mi footer</small>
-
-                        <table border="0" style="border-collapse:collapse;color:000000;width:100%" cellpadding="3" cellspacing="3">
-                            <tr>
-                                <td  class="text-center" >________________________</td>
-                                <td  class="text-center" >________________________</td>
-                            </tr>
-                            <tr >
-                                 <td class="text-center" >
-                                     <strong>Nombre y Firma Entrega</strong>
-                                 </td>
-                             <td class="text-center" >
-                                  <strong>Nombre y Firma Recepcion</strong>
-                              </td>
-                                                    
-                             </tr>
-                        </table>
-                    </div>
-                </t>
-            </t>
-        </template> -->
+   
     <template id="report_header_custom" inherit_id="sale.report_saleorder_document">
         <xpath expr="//div[@class='page']" position="replace">
-            <!-- <div class="header">
-                    <h1>hola mundo</h1>
-                    <p>desde odoo</p>
-                    <t t-set="value" t-value="2+2"/>
-                    <t t-esc="value"> t-esc, para imprimir valor</t>
-                </div>
-         -->
+            <!-- marca de agua-->
+        <xpath expr="//br[1]" position="after">
+        <div style="position:absolute;opacity:0.10;z-index:900;transform:rotate(300deg);-webkit-transform:rotate(300deg);width:150%">
+            <!--tamaño de la letra -->
+            <p style="font-size:200px;">original</p>
+        </div>
+    </xpath>
          <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
         <t t-set="address">
             <strong>Nombre y direccion del client:</strong>

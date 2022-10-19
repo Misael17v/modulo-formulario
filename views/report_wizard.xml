@@ -18,42 +18,22 @@
      <template id="wizard_pdf_template">
         <!-- aqui debe ir web para que no nos marqe error a la hora de imprimir o apraezca el pdf,
         si hay un report, debemos cambiarlo a web-->
+        <!-- aqui debe ir web para que no nos marqe error a la hora de imprimir o apraezca el pdf,
+    si hay un report, debemos cambiarlo a web-->
         <t t-call="web.html_container">
-            
-            <!-- aqui debe ir web para que no nos marqe error a la hora de imprimir o apraezca el pdf,
-        si hay un report, debemos cambiarlo a web-->
+            <t t-foreach="user_id" t-as="u">
                 <t t-call="web.external_layout">
                     <div class="page">
                         <div>
-                            <div class="col-6">
-                                Nombre 1:
-                                <span t-esc="docs.user_id.name"/>
-                            </div>
-                            
-                            <div>
-                                <span>Usuario :</span> <span t-field="docs.user_id.name"/>
-                            </div>
-
-                            <div>
-                                <span>Nombre 2 :</span> <span t-field="docs.name.name" />
-                            </div>
-
-                            
-                            <span t-field="docs.name.name"></span>
+                            <span>Nombre:</span><span t-field="u.name" ></span>
                         </div>
-                        
+                        <div>
+                            <span>Nombre:</span><span t-field="u.phone" ></span>
+                        </div>
                     </div>
-
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th class="text-right">fecha de ordern</th>
-                                <th class="text-right">TRabajador</th>
-                                <th class="text-right">usuario</th>
-                            </tr>
-                        </thead>
-                    </table>
                 </t>
+            </t>
         </t>
     </template>
+
 </odoo>

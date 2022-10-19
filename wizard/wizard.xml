@@ -1,47 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <!-- 1-->
         <record id="wizard_prueba" model="ir.ui.view">
+            <!-- aqui va cualquier nombre-->
             <field name="name">wizard_prueba</field>
+            <!-- nombre del modelo de wizard.py, el cuales el _name="wizard"-->
             <field name="model">wizard</field>
+            <!-- tipo de archivo-->
             <field name="arch" type="xml">
+                <!-- nombre de formulario-->
                <form string="introdoo">
                   <group>
+                    <!-- aqui va lo que aparece dentro del formulario-->
                     <group name="company_dates" string="general information">
 
                     </group>
+                    <!-- aqui va los campos que se crearon en wizard.py-->
                     <group>
                         <field name="date_from"/>
                         <field name="date_to"/>
                     </group>
+                    <!-- aqui va los campos que se crearon en wizard.py-->
                     <group>
                         <field name="name"/>
                         <field name="user_id"/>
                     </group>
                   </group>
+                  <!-- por buena practica slo botones siempre van en el footer-->
                   <footer>
+                    <!-- 1.-este es el boton de imprimir, tiene como nombre check_report, que hace referencia
+                    al motodo que se creo en wizard.py. 2.-tiene un string que va ser el nombre del boton,
+                    3.- tiene un type que va a indicar cual es el tipo del boton que en este caso es un objeto
+                    4.- tiene un default_focus que hace referencia al estilo del boton
+                    5.- tiene una clase que es de oe_highligh -->
                     <button name="check_report" string="Print" type="object" default_focus="1" class="oe_highlight" />
+                    <!-- boton cancelar, 1.-tiene un string que es el nombre que va a llevar el boton,
+                         2.-tiene una clase que va ser btn-secondary, que hace refencia la posicion
+                        3.- spacial lo que hace aqui es que indica que es de un boton de cancelar -->
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                   </footer>
                </form>
             </field>
         </record>
-
+         
+       <!--2--> 
         <record id="action_menu_wizard" model="ir.actions.act_window">
+            <!-- aqui ponemos el nombre de la ventana emergente-->
             <field name="name">wizard_menu</field>
+            <!-- nombre del modelo de wizard.py, el cuales el _name="wizard"-->
             <field name="res_model">wizard</field>
-            
-            
+            <!-- aqui el name="view_mode el cual hace refencia al modo de vista  la cual es de tipo form"-->
             <field name="view_mode">form</field>
+            <!-- aqui usamos view_id, y el ref lo sacamos del id del primer record (1)-->
             <field name="view_id" ref="wizard_prueba"/>
+            <!-- usamos el target para que aparezca el menu-->
             <field name="target">new</field>
         </record>
-
+        
+        <!--Este es el menu padre, aqui va el id con el que vamos a identificar,
+             2.- el name, es nombre que va a llevar del menu,
+            3.-el parent de este es el id_externo de donde se saca desde odoo,
+            4.- lleva una secuencia -->
         <menuitem id="menu_introdoo"
          name="Menu "
          parent="my_library.library_base_menu"
          sequence="10"/>
-
+       <!-- Menu hijo, para este, 1.-necesitamos un id para identificarlo,
+            2.- lleva el nombre, 3.- una secuencia,
+            4.-un action, que este action lleva el id del segundo record (2),
+            5.-parent,primero ponemos el nombre del modulo, pues un punto y usamos el id del menu padre
+        que es menu_introdoo -->
        <menuitem id="submwnu_introdoo"
        name="pfd"
        sequence="3"

@@ -65,6 +65,23 @@
                         </td>
                     </tr>
                    </table>
+                   <br/>
+                   <table class="table table-bordered mt32" >
+                    <thead>
+                        <tr>
+                            <th name="th_catgoria" class="text-left">
+                                <span>Catgoria</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="busqueda" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-esc="line['category_id']"/>
+                            </td>
+                        </tr>
+                    </t>
+                   </table>
                 </div>
             </t>
         </t>

@@ -19,6 +19,7 @@ class ResCompany(models.TransientModel):
           #por lo que vamos a juntar esos 2 con un punto y debe quedar a unidos algo as: my_library.action_report_wizard
           
     def check_report(self):
+        print("test...", self.read()[0])
         data = {}
         data['form'] = self.read(['user_id','name_li','date_from', 'date_to'])[0]
         return self._print_report(data)

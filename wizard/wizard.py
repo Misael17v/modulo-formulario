@@ -5,7 +5,7 @@ class ResCompany(models.TransientModel):
     
     date_from=fields.Datetime('Date from')
     date_to=fields.Datetime('date to')
-    name=fields.Many2one('library.book',string="titulo")
+    name_li=fields.Many2one('library.book',string="titulo")
     user_id=fields.Many2one('res.partner', string='usuario')
     
     #boton de imprimir, definimos una funcion,usamos un nombre para el boton imprimir que esta en wizard.xml el cual es:
@@ -20,11 +20,11 @@ class ResCompany(models.TransientModel):
           
     def check_report(self):
         data = {}
-        data['form'] = self.read(['user_id','name','date_from', 'date_to'])[0]
+        data['form'] = self.read(['user_id','name_li','date_from', 'date_to'])[0]
         return self._print_report(data)
 
     def _print_report(self, data):
-        data['form'].update(self.read(['user_id','name', 'date_from', 'date_to'])[0])
+        data['form'].update(self.read(['user_id','name_li', 'date_from', 'date_to'])[0])
         return self.env.ref('my_library.action_report_wizard').report_action(self,data=data)
     
     

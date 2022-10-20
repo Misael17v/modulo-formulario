@@ -23,7 +23,7 @@
                     </group>
                     <!-- aqui va los campos que se crearon en wizard.py-->
                     <group>
-                        <field name="name"/>
+                        <field name="name_li"/>
                         <field name="user_id"/>
                     </group>
                   </group>

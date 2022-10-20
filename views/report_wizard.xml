@@ -21,17 +21,13 @@
         <!-- aqui debe ir web para que no nos marqe error a la hora de imprimir o apraezca el pdf,
     si hay un report, debemos cambiarlo a web-->
         <t t-call="web.html_container">
-            <t t-foreach="user_id" t-as="u">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <div>
-                            <span>Nombre:</span><span t-field="u.name" ></span>
-                        </div>
-                        <div>
-                            <span>Nombre:</span><span t-field="u.phone" ></span>
-                        </div>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div>
+                        <span>NOmbre del titulo:</span>
+                        <t t-esc="form['name_li'][1]" />
                     </div>
-                </t>
+                </div>
             </t>
         </t>
     </template>

@@ -72,7 +72,7 @@
             4.-un action, que este action lleva el id del segundo record (2),
             5.-parent,primero ponemos el nombre del modulo, pues un punto y usamos el id del menu padre
         que es menu_introdoo -->
-       <menuitem id="submenu_introdoo"
+       <menuitem id="submenu_report"
        name="REPORTE"
        sequence="3"
        action="action_menu_wizard"

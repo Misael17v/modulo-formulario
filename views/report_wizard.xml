@@ -77,7 +77,7 @@
                     <t t-foreach="busqueda" t-as="line">
                         <tr>
                             <td>
-                                <span t-esc="line['category_id']"/>
+                                <span t-esc="line['name']"/>
                             </td>
                         </tr>
                     </t>

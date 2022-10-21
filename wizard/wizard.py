@@ -32,7 +32,7 @@ class ResCompany(models.TransientModel):
             print("domain",domain)
         
         print("test...", self.read()[0])
-        busqueda =self.env['library.book'].search_read(domain)
+        busqueda =self.env['library.book'].search_read()
         data = {
             'form': self.read()[0],
             'busqueda':busqueda
